@@ -11,7 +11,10 @@ function Search() {
   function handleAdd() {
     const trimmed = task.trim()
     if (!trimmed) return // ignore empty/whitespace-only tasks
-    addTask(trimmed)
+    addTask({
+      id: crypto.randomUUID(),
+      title: trimmed,
+    })
     setTask('') // clears the input
   }
 
