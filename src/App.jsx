@@ -1,7 +1,7 @@
-import Form from './components/organisms/Form'
+import ToDo from './pages/ToDo'
 
 function App() {
-  return <Form></Form>
+  return <ToDo></ToDo>
 }
 
 export default App

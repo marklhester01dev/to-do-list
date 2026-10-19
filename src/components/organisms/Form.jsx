@@ -1,12 +1,21 @@
-import GroupList from '../molecules/GroupList'
 import Search from '../molecules/Search'
+import { useTaskContext } from '../../contexts/TaskProvider'
+import GroupList from '../molecules/GroupList'
 
 function Form() {
+  const { taskList } = useTaskContext()
   return (
-    <form>
+    <div>
       <Search></Search>
-      <GroupList></GroupList>
-    </form>
+
+      <ul>
+        {taskList.map((task, index) => (
+          <GroupList key={index} task={task}></GroupList>
+        ))}
+        {/* when implementing deleting, editing, or reordering tasks, unique task IDs are preferable to array indexes for keys. */}
+        {/* The key name here is reserved by React and is never passed as a prop (the word key), React logs warning if you destructure it */}
+      </ul>
+    </div>
   )
 }
 

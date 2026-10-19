@@ -1,17 +1,15 @@
 import Button from '../atoms/Buttons'
 import List from '../atoms/List'
-function GroupList() {
+function GroupList({ id = null, task = '' }) {
   return (
-    <ul>
-      <List>
-        <span>Hello World</span>
+    <List>
+      <span id={id}>{task}</span>
 
-        <div>
-          <Button type="button">Edit</Button>
-          <Button type="button">Delete</Button>
-        </div>
-      </List>
-    </ul>
+      <div>
+        <Button type="button">Edit</Button>
+        <Button type="button">Delete</Button>
+      </div>
+    </List>
   )
 }
 
