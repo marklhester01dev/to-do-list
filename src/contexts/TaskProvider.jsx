@@ -12,9 +12,14 @@ const TaskProvider = ({ children }) => {
     //pass previous state into the callback and use it to calculate the next state
   }
 
+  function deleteTask(taskID) {
+    setTaskList((prevTasks) => prevTasks.filter((task) => task.id !== taskID))
+  }
+
   const value = {
     taskList,
     addTask,
+    deleteTask,
   }
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>

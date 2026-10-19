@@ -9,8 +9,8 @@ function Form() {
       <Search></Search>
 
       <ul>
-        {taskList.map((task, index) => (
-          <GroupList key={index} task={task}></GroupList>
+        {taskList.map((task) => (
+          <GroupList id={task.id} task={task.title}></GroupList>
         ))}
         {/* when implementing deleting, editing, or reordering tasks, unique task IDs are preferable to array indexes for keys. */}
         {/* The key name here is reserved by React and is never passed as a prop (the word key), React logs warning if you destructure it */}
