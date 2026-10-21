@@ -26,8 +26,10 @@ const TaskProvider = ({ children }) => {
     if (!selectedTask) return
 
     setEditingID(selectedTask.id)
+    //editing id will have the current value of this
 
     return selectedTask
+    //returns the ID of the task
   }
 
   function updateTask(taskID, newTitle) {
@@ -38,6 +40,7 @@ const TaskProvider = ({ children }) => {
     )
 
     setEditingID(null)
+    //reset the value of the setEditingID
   }
 
   const value = {

@@ -11,15 +11,19 @@ function Search() {
   const { editingID, addTask, editTask, updateTask, setEditingID } =
     useTaskContext()
 
+    //use effect runs after the state of the editing ID is updated
   useEffect(() => {
     if (editingID === null) return
 
     const selectedTask = editTask(editingID)
+    //stores the task to be edited
+    // {id: ..., title: ...}
 
     if (selectedTask) {
       setTask(selectedTask.title)
     }
   }, [editingID])
+  //editing ID is the dependency state, holds the current id of the selected task
 
   function handleSubmit() {
     const trimmed = task.trim()
@@ -28,11 +32,15 @@ function Search() {
 
     if (editingID !== null) {
       updateTask(editingID, trimmed)
+      //if the editing id is true
+      // the edit button set's the state of this to true
     } else {
       addTask({
         id: crypto.randomUUID(),
+        //generate a random id (unique per id)
         title: trimmed,
       })
+      //if null, add to the task
     }
 
     setTask('')
@@ -40,7 +48,9 @@ function Search() {
 
   function handleCancel() {
     setTask('')
+    //resets the task input
     setEditingID(null)
+    //since this is cancel, the editing mode will be equal to null
   }
 
   return (
