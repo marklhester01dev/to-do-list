@@ -16,10 +16,24 @@ const TaskProvider = ({ children }) => {
     setTaskList((prevTasks) => prevTasks.filter((task) => task.id !== taskID))
   }
 
+  function getTaskByID(taskID) {
+    return taskList.find((task) => task.id === taskID)
+  }
+
+  function updateTask(taskID, newTitle) {
+    setTaskList((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === taskID ? { ...task, title: newTitle } : task,
+      ),
+    )
+  }
+
   const value = {
     taskList,
     addTask,
     deleteTask,
+    getTaskByID,
+    updateTask,
   }
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>
